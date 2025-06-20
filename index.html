@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>notBuyer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <link href="assets/css/styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="page">
+      <div id="blur" class="blur">
+        <img src="assets/img/blue.png" alt="" />
+        <img src="assets/img/white.png" alt="" />
+        <img src="assets/img/red.png" alt="" />
+        <img src="assets/img/green.png" alt="" />
+        <img class="blur__stars" src="assets/img/stars.png" alt="" />
+      </div>
+      <div class="wrapper active" id="home">
+        <div class="wrapper__top">
+          <header class="header">
+            <div class="container">
+              <a class="header__logo">
+                <svg><use xlink:href="assets/img/icon.svg#logo"></use></svg>
+                <span>notBuyer</span>
+              </a>
+              <div class="header__right">
+                <button class="button balance__button" onclick="goTo('profile')">
+                  <svg><use xlink:href="assets/img/icon.svg#tonButton"></use></svg>
+                  <span>1,000</span>
+                  <svg><use xlink:href="assets/img/icon.svg#deposit"></use></svg>
+                </button>
+                <a class="header__img" onclick="goTo('profile')">
+                  <img src="assets/img/user.png" alt="" />
+                </a>
+              </div>
+            </div>
+          </header>
+          <main class="main">
+            <div class="container">
+              <div class="main__wrapper">
+                <div class="filter hidden">
+                  <div class="filter__flex">
+                    <div class="filter__input">
+                      <svg><use xlink:href="assets/img/icon.svg#search"></use></svg>
+                      <input type="text" id="filterInput" placeholder="Поиск по ID" />
+                    </div>
+                    <button id="filterButton" data-modal-id="filterModal" class="button filter__button">
+                      <svg><use xlink:href="assets/img/icon.svg#filter"></use></svg>
+                      <span>Filter</span>
+                    </button>
+                  </div>
+                  <div class="filter__inner"></div>
+                </div>
+                <div class="items" id="itemsWrapper">
+                  <div class="item">
+                    <div class="item__top">
+                      <div class="item__img">
+                        <img src="assets/img/item.png" alt="" />
+                      </div>
+                      <div class="item__name">Loot Bag1</div>
+                      <div class="item__number">#116</div>
+                    </div>
+                    <button class="button item__button" data-modal-id="stepModal">
+                      <svg><use xlink:href="assets/img/icon.svg#tonButton"></use></svg>
+                      <span>111.11</span>
+                    </button>
+                  </div>
+                  <div class="item">
+                    <div class="item__top">
+                      <div class="item__img">
+                        <img src="assets/img/item.png" alt="" />
+                      </div>
+                      <div class="item__name">Loot Bag2</div>
+                      <div class="item__number">#2221</div>
+                    </div>
+                    <button class="button item__button" data-modal-id="stepModal">
+                      <svg><use xlink:href="assets/img/icon.svg#tonButton"></use></svg>
+                      <span>112.22</span>
+                    </button>
+                  </div>
+                  <div class="item">
+                    <div class="item__top">
+                      <div class="item__img">
+                        <img src="assets/img/item.png" alt="" />
+                      </div>
+                      <div class="item__name">Loot Bag3</div>
+                      <div class="item__number">#333534</div>
+                    </div>
+                    <button class="button item__button" data-modal-id="stepModal">
+                      <svg><use xlink:href="assets/img/icon.svg#tonButton"></use></svg>
+                      <span>2.28</span>
+                    </button>
+                  </div>
+                  <div class="item">
+                    <div class="item__top">
+                      <div class="item__img">
+                        <img src="assets/img/item.png" alt="" />
+                      </div>
+                      <div class="item__name">Loot Bag4</div>
+                      <div class="item__number">#44433</div>
+                    </div>
+                    <button class="button item__button" data-modal-id="stepModal">
+                      <svg><use xlink:href="assets/img/icon.svg#tonButton"></use></svg>
+                      <span>87.77</span>
+                    </button>
+                  </div>
+                  <div class="item">
+                    <div class="item__top">
+                      <div class="item__img">
+                        <img src="assets/img/item.png" alt="" />
+                      </div>
+                      <div class="item__name">Loot Bag5</div>
+                      <div class="item__number">#5554</div>
+                    </div>
+                    <button class="button item__button" data-modal-id="stepModal">
+                      <svg><use xlink:href="assets/img/icon.svg#tonButton"></use></svg>
+                      <span>88</span>
+                    </button>
+                  </div>
+                  <div class="item">
+                    <div class="item__top">
+                      <div class="item__img">
+                        <img src="assets/img/item.png" alt="" />
+                      </div>
+                      <div class="item__name">Loot Bag6</div>
+                      <div class="item__number">#6555</div>
+                    </div>
+                    <button class="button item__button" data-modal-id="stepModal">
+                      <svg><use xlink:href="assets/img/icon.svg#tonButton"></use></svg>
+                      <span>1.65</span>
+                    </button>
+                  </div>
+                </div>
+                <!-- <div class="items">
+                <div class="items__empty">
+                  <div class="items__empty-head">У вас нет подарков</div>
+                  <div class="items__empty-text">
+                    Мы не смогли обнаружить подарки <br />
+                    на вашем аккаунте, попробуйте снова.
+                  </div>
+                </div>
+              </div> -->
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+      <div class="wrapper" id="profile">
+        <div class="wrapper__top">
+          <header class="header">
+            <div class="container">
+              <button class="button__back" onclick="goTo('home')">
+                <svg><use xlink:href="assets/img/icon.svg#back"></use></svg>
+              </button>
+              <div class="header__right">
+                <div class="header__right-col">
+                  <div class="username">Username</div>
+                  <div class="userid">ID: 4234321</div>
+                </div>
+                <a class="header__img">
+                  <img src="assets/img/user.png" alt="" />
+                </a>
+              </div>
+            </div>
+          </header>
+          <main class="main">
+            <div class="container">
+              <div class="main__wrapper profile__wrapper">
+                <div class="profile__wrapper-top">
+                  <div class="profile__text">Ваш баланс</div>
+                  <div class="profile__balance">
+                    <div class="profile__balance-flex">
+                      <span>5,000</span>
+                      <svg><use xlink:href="assets/img/icon.svg#tonBlue"></use></svg>
+                    </div>
+                    <div class="profile__balance-currency"><span>1,176,000</span> ₽</div>
+                  </div>
+                </div>
+                <div class="profile__wrapper-bottom">
+                  <button class="button withdraw__button full center" onclick="goTo('withdraw')">
+                    <span>Вывести средства</span>
+                    <svg><use xlink:href="assets/img/icon.svg#deposit"></use></svg>
+                  </button>
+                  <div class="profile__stats">
+                    <div class="item">
+                      <div class="item__top">
+                        <span>32,312</span>
+                        <svg><use xlink:href="assets/img/icon.svg#gift"></use></svg>
+                      </div>
+                      <div class="item__bottom">Всего продано</div>
+                    </div>
+                    <div class="item">
+                      <div class="item__top">
+                        <span>4</span>
+                        <svg><use xlink:href="assets/img/icon.svg#lvl"></use></svg>
+                      </div>
+                      <div class="item__bottom">Ваш уровень</div>
+                    </div>
+                    <div class="item">
+                      <div class="item__top">
+                        <span>112,314.53</span>
+                        <svg><use xlink:href="assets/img/icon.svg#tonButton"></use></svg>
+                      </div>
+                      <div class="item__bottom">Сумма продаж</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="profile__wrapper-history">
+                  <div class="profile__history-head">История операций</div>
+                  <div class="filter">
+                    <div class="filter__flex">
+                      <div class="filter__input">
+                        <svg><use xlink:href="assets/img/icon.svg#search"></use></svg>
+                        <input type="text" placeholder="Поиск по ID" />
+                      </div>
+                      <button data-modal-id="historyModal" class="button filter__button">
+                        <svg><use xlink:href="assets/img/icon.svg#filter"></use></svg>
+                        <span>Filter</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="history">
+                    <div class="item">
+                      <div class="item__left">
+                        <div class="item__col">
+                          <div class="action">Вывод средств</div>
+                          <div class="status process">В обработке</div>
+                        </div>
+                      </div>
+                      <div class="item__right">
+                        <div class="price">
+                          <div class="price__ton">
+                            <span>500</span>
+                            <svg><use xlink:href="assets/img/icon.svg#tonHistory"></use></svg>
+                          </div>
+                          <div class="price__ruble">(<span>1,000</span> <span>₽</span>)</div>
+                        </div>
+                        <div class="time">23.05.2025 12:00 AM</div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="item__left">
+                        <div class="item__col">
+                          <div class="action">Вывод средств</div>
+                          <div class="status error">Ошибка</div>
+                        </div>
+                      </div>
+                      <div class="item__right">
+                        <div class="price">
+                          <div class="price__ton">
+                            <span>500</span>
+                            <svg><use xlink:href="assets/img/icon.svg#tonHistory"></use></svg>
+                          </div>
+                          <div class="price__ruble">(<span>1,000</span> <span>₽</span>)</div>
+                        </div>
+                        <div class="time">23.05.2025 12:00 AM</div>
+                      </div>
+                    </div>
+                    <div class="item success">
+                      <div class="item__left">
+                        <div class="item__img">
+                          <img src="assets/img/item.png" alt="" />
+                        </div>
+                        <div class="item__col">
+                          <div class="action">Loot Bag</div>
+                          <div class="status">#737</div>
+                        </div>
+                      </div>
+                      <div class="item__right">
+                        <div class="price">
+                          <div class="price__ton">
+                            <span>500</span>
+                            <svg><use xlink:href="assets/img/icon.svg#tonHistory"></use></svg>
+                          </div>
+                          <div class="price__ruble">(<span>1,000</span> <span>₽</span>)</div>
+                        </div>
+                        <div class="time">23.05.2025 12:00 AM</div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="item__left">
+                        <div class="item__col">
+                          <div class="action">Вывод средств</div>
+                          <div class="status success">Выполнено</div>
+                        </div>
+                      </div>
+                      <div class="item__right">
+                        <div class="price">
+                          <div class="price__ton">
+                            <span>500</span>
+                            <svg><use xlink:href="assets/img/icon.svg#tonHistory"></use></svg>
+                          </div>
+                          <div class="price__ruble">(<span>1,000</span> <span>₽</span>)</div>
+                        </div>
+                        <div class="time">23.05.2025 12:00 AM</div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="item__left">
+                        <div class="item__col">
+                          <div class="action">Вывод средств</div>
+                          <div class="status success">Выполнено</div>
+                        </div>
+                      </div>
+                      <div class="item__right">
+                        <div class="price">
+                          <div class="price__ton">
+                            <span>500</span>
+                            <svg><use xlink:href="assets/img/icon.svg#tonHistory"></use></svg>
+                          </div>
+                          <div class="price__ruble">(<span>1,000</span> <span>₽</span>)</div>
+                        </div>
+                        <div class="time">23.05.2025 12:00 AM</div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="item__left">
+                        <div class="item__col">
+                          <div class="action">Вывод средств</div>
+                          <div class="status success">Выполнено</div>
+                        </div>
+                      </div>
+                      <div class="item__right">
+                        <div class="price">
+                          <div class="price__ton">
+                            <span>500</span>
+                            <svg><use xlink:href="assets/img/icon.svg#tonHistory"></use></svg>
+                          </div>
+                          <div class="price__ruble">(<span>1,000</span> <span>₽</span>)</div>
+                        </div>
+                        <div class="time">23.05.2025 12:00 AM</div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="item__left">
+                        <div class="item__col">
+                          <div class="action">Вывод средств</div>
+                          <div class="status success">Выполнено</div>
+                        </div>
+                      </div>
+                      <div class="item__right">
+                        <div class="price">
+                          <div class="price__ton">
+                            <span>500</span>
+                            <svg><use xlink:href="assets/img/icon.svg#tonHistory"></use></svg>
+                          </div>
+                          <div class="price__ruble">(<span>1,000</span> <span>₽</span>)</div>
+                        </div>
+                        <div class="time">23.05.2025 12:00 AM</div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="item__left">
+                        <div class="item__col">
+                          <div class="action">Вывод средств</div>
+                          <div class="status success">Выполнено</div>
+                        </div>
+                      </div>
+                      <div class="item__right">
+                        <div class="price">
+                          <div class="price__ton">
+                            <span>500</span>
+                            <svg><use xlink:href="assets/img/icon.svg#tonHistory"></use></svg>
+                          </div>
+                          <div class="price__ruble">(<span>1,000</span> <span>₽</span>)</div>
+                        </div>
+                        <div class="time">23.05.2025 12:00 AM</div>
+                      </div>
+                    </div>
+                    <div class="item item__last">
+                      <div class="item__text">Все транзакции на данный момент.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+      <div class="wrapper" id="withdraw">
+        <div class="wrapper__top">
+          <header class="header center">
+            <div class="container">
+              <button class="button__back" onclick="goTo('profile')">
+                <svg><use xlink:href="assets/img/icon.svg#back"></use></svg>
+              </button>
+              <div class="header__right">
+                <span class="page__name">Вывод средств</span>
+              </div>
+            </div>
+          </header>
+          <main class="main">
+            <div class="container">
+              <div class="main__wrapper profile__wrapper">
+                <div class="profile__wrapper-top">
+                  <div class="profile__text">Введите сумму</div>
+                  <div class="profile__balance">
+                    <div class="profile__balance-flex">
+                      <input id="withdrawInput" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" placeholder="0" />
+                      <svg><use xlink:href="assets/img/icon.svg#tonBlue"></use></svg>
+                    </div>
+                    <div class="profile__balance-currency"><span>1,176,000</span> ₽</div>
+                  </div>
+                </div>
+                <div class="profile__wrapper-bottom">
+                  <div class="select">
+                    <button>Мин</button>
+                    <button>25%</button>
+                    <button>50%</button>
+                    <button>Всё</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+        <div class="wrapper__bottom col">
+          <div class="container">
+            <div class="wrapper__bottom-text">
+              Доступно для вывода:
+              <span class="white">
+                <span>10,000</span>
+                <svg><use xlink:href="assets/img/icon.svg#tonMini"></use></svg>
+              </span>
+              <span>(2,352,000 ₽)</span>
+            </div>
+            <button id="withdrawButton" class="button full center" disabled onclick="goTo('withdrawSelect')">Далее</button>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper" id="withdrawSelect">
+        <div class="wrapper__top">
+          <header class="header center">
+            <div class="container">
+              <button class="button__back" onclick="goTo('withdraw')">
+                <svg><use xlink:href="assets/img/icon.svg#back"></use></svg>
+              </button>
+              <div class="header__right">
+                <span class="page__name">Вывод средств</span>
+              </div>
+            </div>
+          </header>
+          <main class="main">
+            <div class="container">
+              <div class="main__wrapper profile__wrapper">
+                <div class="profile__wrapper-top">
+                  <div class="profile__text">Вы выводите</div>
+                  <div class="profile__balance">
+                    <div class="profile__balance-flex">
+                      <span id="withdrawSum">5,000</span>
+                      <svg><use xlink:href="assets/img/icon.svg#tonBlue"></use></svg>
+                    </div>
+                    <div class="profile__balance-currency"><span>1,176,000</span> ₽</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+        <div class="wrapper__bottom col">
+          <div class="container">
+            <div class="wrapper__bottom-head">Выберите путь для вывода средств</div>
+            <div class="wrapper__bottom-select" id="withdrawSelectList">
+              <div class="item" data-target="withdrawSbp">
+                <div class="item__left">
+                  <div class="item__icon">
+                    <svg><use xlink:href="assets/img/icon.svg#sbp"></use></svg>
+                  </div>
+                  <div class="item__col">
+                    <div class="item__col-top">
+                      СБП
+                      <span>Комиссия 2%</span>
+                    </div>
+                    <div class="item__col-bottom">1,176,000 ₽</div>
+                  </div>
+                </div>
+                <div class="item__check"></div>
+              </div>
+              <div class="item" data-target="withdrawCard">
+                <div class="item__left">
+                  <div class="item__icon">
+                    <svg><use xlink:href="assets/img/icon.svg#card"></use></svg>
+                  </div>
+                  <div class="item__col">
+                    <div class="item__col-top">
+                      Карта
+                      <span>Комиссия 2%</span>
+                    </div>
+                    <div class="item__col-bottom">1,176,000 ₽</div>
+                  </div>
+                </div>
+                <div class="item__check"></div>
+              </div>
+              <div class="item" data-target="withdrawCrypto">
+                <div class="item__left">
+                  <div class="item__icon">
+                    <svg><use xlink:href="assets/img/icon.svg#crypto"></use></svg>
+                  </div>
+                  <div class="item__col">
+                    <div class="item__col-top">
+                      Криптовалюта
+                      <span>Комиссия 2%</span>
+                    </div>
+                    <div class="item__col-bottom">38.86 TON</div>
+                  </div>
+                </div>
+                <div class="item__check"></div>
+              </div>
+              <div class="item" data-target="withdrawTon" data-coin="TON">
+                <div class="item__left">
+                  <div class="item__icon">
+                    <svg><use xlink:href="assets/img/icon.svg#ton"></use></svg>
+                  </div>
+                  <div class="item__col">
+                    <div class="item__col-top">
+                      TON
+                      <span>Комиссия 2%</span>
+                    </div>
+                    <div class="item__col-bottom">38.86 TON</div>
+                  </div>
+                </div>
+                <div class="item__check"></div>
+              </div>
+            </div>
+            <div class="wrapper__bottom-buttons">
+              <button id="withdrawSelectButton" disabled class="button center">Далее</button>
+              <button class="button button__gray center" onclick="goTo('withdraw')">Назад</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper" id="withdrawSbp">
+        <div class="wrapper__top">
+          <header class="header center">
+            <div class="container">
+              <button class="button__back" onclick="goTo('withdrawSelect')">
+                <svg><use xlink:href="assets/img/icon.svg#back"></use></svg>
+              </button>
+              <div class="header__right">
+                <span class="page__name">Введите даные</span>
+              </div>
+            </div>
+          </header>
+          <main class="main">
+            <div class="container">
+              <div class="main__wrapper profile__wrapper">
+                <div class="profile__wrapper-top">
+                  <div class="phone">
+                    <div class="filter__flex paste">
+                      <div class="filter__input">
+                        <svg><use xlink:href="assets/img/icon.svg#phone"></use></svg>
+                        <input type="number" class="withdrawPhone" placeholder="Введите номер телефона +7" />
+                        <button class="pasteButton">Вставить</button>
+                      </div>
+                      <div class="phone__error">Недействительный номер телефона</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="profile__wrapper-bottom">
+                  <div class="wrapper__select">
+                    <div class="wrapper__bottom-head">Выберите банк для вывода средств</div>
+                    <div class="wrapper__bottom-select">
+                      <div class="item">
+                        <div class="item__left">
+                          <div class="item__icon">
+                            <img src="assets/img/t-bank.png" alt="" />
+                          </div>
+                          <div class="item__col">
+                            <div class="item__col-top">
+                              Т-Банк
+                              <span>Комиссия 2%</span>
+                            </div>
+                            <div class="item__col-bottom">1,176,000 ₽</div>
+                          </div>
+                        </div>
+                        <div class="item__check"></div>
+                      </div>
+                      <div class="item">
+                        <div class="item__left">
+                          <div class="item__icon">
+                            <img src="assets/img/alfa-bank.png" alt="" />
+                          </div>
+                          <div class="item__col">
+                            <div class="item__col-top">
+                              Альфа Банк
+                              <span>Комиссия 2%</span>
+                            </div>
+                            <div class="item__col-bottom">1,176,000 ₽</div>
+                          </div>
+                        </div>
+                        <div class="item__check"></div>
+                      </div>
+                      <div class="item">
+                        <div class="item__left">
+                          <div class="item__icon">
+                            <img src="assets/img/sber.png" alt="" />
+                          </div>
+                          <div class="item__col">
+                            <div class="item__col-top">
+                              Сбербанк
+                              <span>Комиссия 2%</span>
+                            </div>
+                            <div class="item__col-bottom">1,176,000 ₽</div>
+                          </div>
+                        </div>
+                        <div class="item__check"></div>
+                      </div>
+                      <div class="item">
+                        <div class="item__left">
+                          <div class="item__icon">
+                            <img src="assets/img/vtb.png" alt="" />
+                          </div>
+                          <div class="item__col">
+                            <div class="item__col-top">
+                              ВТБ
+                              <span>Комиссия 2%</span>
+                            </div>
+                            <div class="item__col-bottom">1,176,000 ₽</div>
+                          </div>
+                        </div>
+                        <div class="item__check"></div>
+                      </div>
+                      <div class="item active">
+                        <div class="item__left">
+                          <div class="item__icon">
+                            <img src="assets/img/raiffeisen.png" alt="" />
+                          </div>
+                          <div class="item__col">
+                            <div class="item__col-top">
+                              Райффайзен
+                              <span>Комиссия 2%</span>
+                            </div>
+                            <div class="item__col-bottom">1,176,000 ₽</div>
+                          </div>
+                        </div>
+                        <div class="item__check"></div>
+                      </div>
+                      <div class="item">
+                        <div class="item__left">
+                          <div class="item__icon">
+                            <img src="assets/img/ozon.png" alt="" />
+                          </div>
+                          <div class="item__col">
+                            <div class="item__col-top">
+                              OZON-Банк
+                              <span>Комиссия 2%</span>
+                            </div>
+                            <div class="item__col-bottom">1,176,000 ₽</div>
+                          </div>
+                        </div>
+                        <div class="item__check"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+        <div class="wrapper__bottom col">
+          <div class="container">
+            <div class="wrapper__bottom-text left">
+              К получению:
+              <span class="white"> 2,352,000 ₽ </span>
+            </div>
+            <div class="wrapper__bottom-buttons">
+              <button class="button center" disabled>Далее</button>
+              <button class="button button__gray center" onclick="goTo('withdrawSelect')">Назад</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper" id="withdrawCard">
+        <div class="wrapper__top">
+          <header class="header center">
+            <div class="container">
+              <button class="button__back" onclick="goTo('withdrawSelect')">
+                <svg><use xlink:href="assets/img/icon.svg#back"></use></svg>
+              </button>
+              <div class="header__right">
+                <span class="page__name">Выберите банк</span>
+              </div>
+            </div>
+          </header>
+          <main class="main">
+            <div class="container">
+              <div class="main__wrapper profile__wrapper">
+                <div class="profile__wrapper-bottom">
+                  <div class="wrapper__select">
+                    <div class="wrapper__bottom-head">Выберите банк для вывода средств</div>
+                    <div class="wrapper__bottom-select">
+                      <div class="item">
+                        <div class="item__left">
+                          <div class="item__icon">
+                            <img src="assets/img/t-bank.png" alt="" />
+                          </div>
+                          <div class="item__col">
+                            <div class="item__col-top">
+                              Т-Банк
+                              <span>Комиссия 2%</span>
+                            </div>
+                            <div class="item__col-bottom">1,176,000 ₽</div>
+                          </div>
+                        </div>
+                        <div class="item__check"></div>
+                      </div>
+                      <div class="item">
+                        <div class="item__left">
+                          <div class="item__icon">
+                            <img src="assets/img/alfa-bank.png" alt="" />
+                          </div>
+                          <div class="item__col">
+                            <div class="item__col-top">
+                              Альфа Банк
+                              <span>Комиссия 2%</span>
+                            </div>
+                            <div class="item__col-bottom">1,176,000 ₽</div>
+                          </div>
+                        </div>
+                        <div class="item__check"></div>
+                      </div>
+                      <div class="item">
+                        <div class="item__left">
+                          <div class="item__icon">
+                            <img src="assets/img/sber.png" alt="" />
+                          </div>
+                          <div class="item__col">
+                            <div class="item__col-top">
+                              Сбербанк
+                              <span>Комиссия 2%</span>
+                            </div>
+                            <div class="item__col-bottom">1,176,000 ₽</div>
+                          </div>
+                        </div>
+                        <div class="item__check"></div>
+                      </div>
+                      <div class="item">
+                        <div class="item__left">
+                          <div class="item__icon">
+                            <img src="assets/img/vtb.png" alt="" />
+                          </div>
+                          <div class="item__col">
+                            <div class="item__col-top">
+                              ВТБ
+                              <span>Комиссия 2%</span>
+                            </div>
+                            <div class="item__col-bottom">1,176,000 ₽</div>
+                          </div>
+                        </div>
+                        <div class="item__check"></div>
+                      </div>
+                      <div class="item active">
+                        <div class="item__left">
+                          <div class="item__icon">
+                            <img src="assets/img/raiffeisen.png" alt="" />
+                          </div>
+                          <div class="item__col">
+                            <div class="item__col-top">
+                              Райффайзен
+                              <span>Комиссия 2%</span>
+                            </div>
+                            <div class="item__col-bottom">1,176,000 ₽</div>
+                          </div>
+                        </div>
+                        <div class="item__check"></div>
+                      </div>
+                      <div class="item">
+                        <div class="item__left">
+                          <div class="item__icon">
+                            <img src="assets/img/ozon.png" alt="" />
+                          </div>
+                          <div class="item__col">
+                            <div class="item__col-top">
+                              OZON-Банк
+                              <span>Комиссия 2%</span>
+                            </div>
+                            <div class="item__col-bottom">1,176,000 ₽</div>
+                          </div>
+                        </div>
+                        <div class="item__check"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+        <div class="wrapper__bottom col">
+          <div class="container">
+            <div class="wrapper__bottom-text left">
+              К получению:
+              <span class="white"> 2,352,000 ₽ </span>
+            </div>
+            <div class="wrapper__bottom-buttons">
+              <button class="button center" onclick="goTo('withdrawCardData')">Далее</button>
+              <button class="button button__gray center" onclick="goTo('withdrawSelect')">Назад</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper" id="withdrawCardData">
+        <div class="wrapper__top">
+          <header class="header center">
+            <div class="container">
+              <button class="button__back" onclick="goTo('withdrawCard')">
+                <svg><use xlink:href="assets/img/icon.svg#back"></use></svg>
+              </button>
+              <div class="header__right">
+                <span class="page__name">Введите даные</span>
+              </div>
+            </div>
+          </header>
+          <main class="main">
+            <div class="container">
+              <div class="main__wrapper profile__wrapper">
+                <div class="profile__wrapper-top">
+                  <div class="phone card">
+                    <div class="filter__flex paste">
+                      <div class="filter__input">
+                        <svg><use xlink:href="assets/img/icon.svg#cardInput"></use></svg>
+                        <input id="withdrawCardInput" class="withdrawCard" type="text" inputmode="numeric" pattern="[0-9\s]*" maxlength="19" placeholder="Введите номер карты" />
+                        <button class="pasteButton">Вставить</button>
+                      </div>
+                      <div class="phone__error">Неправильный номер карты</div>
+                    </div>
+                    <div class="filter__flex pad">
+                      <div class="filter__input">
+                        <input type="text" placeholder="Введите ФИО" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+        <div class="wrapper__bottom col">
+          <div class="container">
+            <div class="wrapper__bottom-text left">
+              К получению:
+              <span class="white"> 2,352,000 ₽ </span>
+            </div>
+            <div class="wrapper__bottom-buttons">
+              <button class="button center" disabled>Далее</button>
+              <button class="button button__gray center" onclick="goTo('withdrawCard')">Назад</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper" id="withdrawCrypto">
+        <div class="wrapper__top">
+          <header class="header center">
+            <div class="container">
+              <button class="button__back" onclick="goTo('withdrawSelect')">
+                <svg><use xlink:href="assets/img/icon.svg#back"></use></svg>
+              </button>
+              <div class="header__right">
+                <span class="page__name">Выберите криптовалюту</span>
+              </div>
+            </div>
+          </header>
+          <main class="main">
+            <div class="container">
+              <div class="chain__wrapper">
+                <div class="chain">
+                  <div class="filter__flex">
+                    <div class="filter__input">
+                      <svg><use xlink:href="assets/img/icon.svg#search"></use></svg>
+                      <input type="text" id="withdrawCryptoInput" placeholder="Поиск по криптовалюте" />
+                    </div>
+                  </div>
+                  <div class="filter__inner chain__select">
+                    <div class="filter__badge active">Все сети</div>
+                    <div class="filter__badge">
+                      <img src="assets/img/chain/ethereum.png" alt="" />
+                      <div class="item__flex">ERC-20</div>
+                    </div>
+                    <div class="filter__badge">
+                      <img src="assets/img/chain/tron.png" alt="" />
+                      <div class="item__flex">TRC-20</div>
+                    </div>
+                    <div class="filter__badge">
+                      <img src="assets/img/chain/bnb.png" alt="" />
+                      <div class="item__flex">BSC-20</div>
+                    </div>
+                    <div class="filter__badge">
+                      <img src="assets/img/chain/btc.png" alt="" />
+                      <div class="item__flex">BTC</div>
+                    </div>
+                    <div class="filter__badge">
+                      <img src="assets/img/chain/solana.png" alt="" />
+                      <div class="item__flex">SOL</div>
+                    </div>
+                    <div class="filter__badge">
+                      <img src="assets/img/chain/ripple.png" alt="" />
+                      <div class="item__flex">XRP</div>
+                    </div>
+                    <div class="filter__badge">
+                      <img src="assets/img/chain/litecoin.png" alt="" />
+                      <div class="item__flex">LTC</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="profile__wrapper-bottom">
+                  <div class="chain__inner">
+                    <div class="item" data-coin="Ethereum">
+                      <img src="assets/img/chain/ethereum.png" alt="" />
+                      <div class="item__flex">Ethereum <span>ERC-20</span></div>
+                    </div>
+                    <div class="item" data-coin="Tether">
+                      <img src="assets/img/chain/tether.png" alt="" />
+                      <div class="item__flex">Tether USDT <span>TRC-20</span></div>
+                    </div>
+                    <div class="item" data-coin="BNB">
+                      <img src="assets/img/chain/bnb.png" alt="" />
+                      <div class="item__flex">BNB <span>BSC-20</span></div>
+                    </div>
+                    <div class="item" data-coin="Bitcoin">
+                      <img src="assets/img/chain/btc.png" alt="" />
+                      <div class="item__flex">Bitcoin <span>BTC</span></div>
+                    </div>
+                    <div class="item" data-coin="Solana">
+                      <img src="assets/img/chain/solana.png" alt="" />
+                      <div class="item__flex">Solana <span>SOL</span></div>
+                    </div>
+                    <div class="item" data-coin="Tether">
+                      <img src="assets/img/chain/tether.png" alt="" />
+                      <div class="item__flex">Tether USDT <span>ERC-20</span></div>
+                    </div>
+                    <div class="item" data-coin="Ripple">
+                      <img src="assets/img/chain/ripple.png" alt="" />
+                      <div class="item__flex">Ripple <span>XRP</span></div>
+                    </div>
+                    <div class="item" data-coin="Dogecoin">
+                      <img src="assets/img/chain/dogecoin.png" alt="" />
+                      <div class="item__flex">Dogecoin <span>ERC-20</span></div>
+                    </div>
+                    <div class="item" data-coin="Litecoin">
+                      <img src="assets/img/chain/litecoin.png" alt="" />
+                      <div class="item__flex">Litecoin <span>LTC</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+      <div class="wrapper" id="withdrawWallet">
+        <div class="wrapper__top">
+          <header class="header center">
+            <div class="container">
+              <button class="button__back" onclick="goTo('withdrawCrypto')">
+                <svg><use xlink:href="assets/img/icon.svg#back"></use></svg>
+              </button>
+              <div class="header__right">
+                <span class="page__name">Введите адрес</span>
+              </div>
+            </div>
+          </header>
+          <main class="main">
+            <div class="container">
+              <div class="main__wrapper profile__wrapper">
+                <div class="profile__wrapper-top">
+                  <div class="textarea">
+                    <textarea name="" placeholder="Введите Bitcoin-адрес" id="wallet"></textarea>
+                    <button class="button button__gray" id="pasteButton">Вставить</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+        <div class="wrapper__bottom col">
+          <div class="container">
+            <div class="wrapper__bottom-text left">
+              К получению:
+              <span class="white">
+                <span>0.023242,12</span>
+                <svg><use xlink:href="assets/img/icon.svg#btc"></use></svg>
+              </span>
+              <span>(2,352,000 ₽)</span>
+            </div>
+            <div class="wrapper__bottom-buttons">
+              <button class="button center" disabled>Далее</button>
+              <button class="button button__gray center" onclick="goTo('withdrawCrypto')">Назад</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fixed__wrapper" id="filterModal">
+        <div class="fixed__inner">
+          <div class="fixed__inner-top">
+            <div class="fixed__inner-line"></div>
+            <div class="fixed__inner-content">
+              <div class="fixed__inner-head">Диапозон цены</div>
+              <div class="fixed__inner-flex">
+                <div class="filter__input">
+                  <svg><use xlink:href="assets/img/icon.svg#tonButton"></use></svg>
+                  <input type="text" placeholder="От" />
+                </div>
+                <div class="filter__input">
+                  <svg><use xlink:href="assets/img/icon.svg#tonButton"></use></svg>
+                  <input type="text" placeholder="До" />
+                </div>
+              </div>
+              <div class="fixed__inner-head">Сортировка</div>
+              <div class="fixed__inner-sort">
+                <div class="sort">
+                  <span>Relevant</span>
+                  <div class="check"></div>
+                </div>
+                <div class="sort">
+                  <span>High to Low</span>
+                  <div class="check"></div>
+                </div>
+                <div class="sort">
+                  <span>Low to High</span>
+                  <div class="check"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fixed__inner-bottom">
+            <button class="button center">Сохранить</button>
+            <button class="button center button__gray">Сбросить</button>
+          </div>
+        </div>
+      </div>
+      <div class="fixed__wrapper" id="historyModal">
+        <div class="fixed__inner">
+          <div class="fixed__inner-top">
+            <div class="fixed__inner-line"></div>
+            <div class="fixed__inner-content">
+              <div class="fixed__inner-head">Сортировка</div>
+              <div class="fixed__inner-sort">
+                <div class="sort">
+                  <span>Вывод</span>
+                  <div class="check"></div>
+                </div>
+                <div class="sort">
+                  <span>Пополнение</span>
+                  <div class="check"></div>
+                </div>
+                <div class="sort">
+                  <span>Продажа</span>
+                  <div class="check"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fixed__inner-bottom">
+            <button class="button center">Сохранить</button>
+            <button class="button center button__gray">Сбросить</button>
+          </div>
+        </div>
+      </div>
+      <div class="fixed__wrapper" id="stepModal">
+        <div class="fixed__inner">
+          <div class="fixed__inner-top">
+            <div class="fixed__inner-line absolute"></div>
+            <div class="fixed__inner-content padding">
+              <div class="steps__img">
+                <img src="assets/img/steps_img.png" alt="" />
+                <div class="steps__block">
+                  <div class="step__item">
+                    <div class="step__img">
+                      <img src="assets/img/item2.png" alt="" />
+                    </div>
+                    <span>item</span>
+                  </div>
+                  <div class="step__arrow">
+                    <svg><use xlink:href="assets/img/icon.svg#arrow"></use></svg>
+                  </div>
+                  <div class="step__item step__item-bot">
+                    <div class="step__img"></div>
+                    <span>notBuyer</span>
+                  </div>
+                </div>
+              </div>
+              <div class="steps">
+                <div class="step">
+                  <div class="step__top">
+                    <svg><use xlink:href="assets/img/icon.svg#step_1"></use></svg>
+                    <span>Перейдите в бота используя кнопку ниже</span>
+                  </div>
+                  <div class="step__text">Оффициальный юзернейм бота <a>@notbuyerBot</a></div>
+                </div>
+                <div class="step">
+                  <div class="step__top">
+                    <svg><use xlink:href="assets/img/icon.svg#step_2"></use></svg>
+                    <span>Отправьте подарок боту</span>
+                  </div>
+                  <div class="step__text">Вы должны отправить выбранный подарок</div>
+                </div>
+                <div class="step">
+                  <div class="step__top">
+                    <svg><use xlink:href="assets/img/icon.svg#step_3"></use></svg>
+                    <span>Подарок продан</span>
+                  </div>
+                  <div class="step__text">Вы получите деньги на баланс в течении 1 часа</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fixed__inner-bottom">
+            <button class="button center">Продать подарок</button>
+          </div>
+        </div>
+      </div>
+      <div class="fixed__window"></div>
+    </div>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
