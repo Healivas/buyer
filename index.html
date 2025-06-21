@@ -173,9 +173,11 @@
                 <div class="profile__wrapper-top">
                   <div class="profile__text">Ваш баланс</div>
                   <div class="profile__balance">
-                    <div class="profile__balance-flex">
+                    <div class="profile__balance-flex blue">
                       <span>5,000</span>
-                      <svg><use xlink:href="assets/img/icon.svg#tonBlue"></use></svg>
+                      <svg viewBox="0 0 33 32" width="33" height="32">
+                        <path fill="url(#b)" d="M25.504 2.667H7.495c-3.311 0-5.41 3.571-3.744 6.459L14.866 28.39c.725 1.258 2.542 1.258 3.268 0L29.25 9.126c1.664-2.883-.435-6.46-3.744-6.46h-.002ZM14.856 22.613l-2.42-4.685-5.84-10.445a1.02 1.02 0 0 1 .897-1.526h7.361v16.658l.002-.002ZM26.4 7.48l-5.838 10.45-2.42 4.683V5.955h7.36c.808 0 1.284.857.898 1.525Z" />
+                      </svg>
                     </div>
                     <div class="profile__balance-currency"><span>1,176,000</span> ₽</div>
                   </div>
@@ -399,15 +401,17 @@
                 <div class="profile__wrapper-top">
                   <div class="profile__text">Введите сумму</div>
                   <div class="profile__balance">
-                    <div class="profile__balance-flex">
+                    <div class="profile__balance-flex" id="profileClass">
                       <input id="withdrawInput" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" placeholder="0" />
-                      <svg><use xlink:href="assets/img/icon.svg#tonBlue"></use></svg>
+                      <svg viewBox="0 0 33 32" width="33" height="32">
+                        <path fill="url(#a)" d="M25.504 2.667H7.495c-3.311 0-5.41 3.571-3.744 6.459L14.866 28.39c.725 1.258 2.542 1.258 3.268 0L29.25 9.126c1.664-2.883-.435-6.46-3.744-6.46h-.002ZM14.856 22.613l-2.42-4.685-5.84-10.445a1.02 1.02 0 0 1 .897-1.526h7.361v16.658l.002-.002ZM26.4 7.48l-5.838 10.45-2.42 4.683V5.955h7.36c.808 0 1.284.857.898 1.525Z" />
+                      </svg>
                     </div>
                     <div class="profile__balance-currency"><span>1,176,000</span> ₽</div>
                   </div>
                 </div>
                 <div class="profile__wrapper-bottom">
-                  <div class="select">
+                  <div class="select" id="selectWrapper">
                     <button>Мин</button>
                     <button>25%</button>
                     <button>50%</button>
@@ -423,12 +427,13 @@
             <div class="wrapper__bottom-text">
               Доступно для вывода:
               <span class="white">
-                <span>10,000</span>
+                <span>5,000</span>
                 <svg><use xlink:href="assets/img/icon.svg#tonMini"></use></svg>
               </span>
               <span>(2,352,000 ₽)</span>
             </div>
-            <button id="withdrawButton" class="button full center" disabled onclick="goTo('withdrawSelect')">Далее</button>
+            <button id="withdrawButton" class="button full center" disabled>Далее</button>
+            <div class="wrapper__bottom-error hidden" id="withdrawError">У вас недостаточно денег на балансе</div>
           </div>
         </div>
       </div>
@@ -450,9 +455,11 @@
                 <div class="profile__wrapper-top">
                   <div class="profile__text">Вы выводите</div>
                   <div class="profile__balance">
-                    <div class="profile__balance-flex">
+                    <div class="profile__balance-flex blue">
                       <span id="withdrawSum">5,000</span>
-                      <svg><use xlink:href="assets/img/icon.svg#tonBlue"></use></svg>
+                      <svg viewBox="0 0 33 32" width="33" height="32">
+                        <path fill="url(#b)" d="M25.504 2.667H7.495c-3.311 0-5.41 3.571-3.744 6.459L14.866 28.39c.725 1.258 2.542 1.258 3.268 0L29.25 9.126c1.664-2.883-.435-6.46-3.744-6.46h-.002ZM14.856 22.613l-2.42-4.685-5.84-10.445a1.02 1.02 0 0 1 .897-1.526h7.361v16.658l.002-.002ZM26.4 7.48l-5.838 10.45-2.42 4.683V5.955h7.36c.808 0 1.284.857.898 1.525Z" />
+                      </svg>
                     </div>
                     <div class="profile__balance-currency"><span>1,176,000</span> ₽</div>
                   </div>
@@ -556,14 +563,14 @@
                         <input type="number" class="withdrawPhone" placeholder="Введите номер телефона +7" />
                         <button class="pasteButton">Вставить</button>
                       </div>
-                      <div class="phone__error">Недействительный номер телефона</div>
+                      <div class="phone__error hidden">Недействительный номер телефона</div>
                     </div>
                   </div>
                 </div>
                 <div class="profile__wrapper-bottom">
                   <div class="wrapper__select">
                     <div class="wrapper__bottom-head">Выберите банк для вывода средств</div>
-                    <div class="wrapper__bottom-select">
+                    <div class="wrapper__bottom-select" id="withdrawSbpList">
                       <div class="item">
                         <div class="item__left">
                           <div class="item__icon">
@@ -668,7 +675,7 @@
               <span class="white"> 2,352,000 ₽ </span>
             </div>
             <div class="wrapper__bottom-buttons">
-              <button class="button center" disabled>Далее</button>
+              <button class="button center" disabled id="withdrawSbpButton">Далее</button>
               <button class="button button__gray center" onclick="goTo('withdrawSelect')">Назад</button>
             </div>
           </div>
@@ -692,7 +699,7 @@
                 <div class="profile__wrapper-bottom">
                   <div class="wrapper__select">
                     <div class="wrapper__bottom-head">Выберите банк для вывода средств</div>
-                    <div class="wrapper__bottom-select">
+                    <div class="wrapper__bottom-select" id="withdrawCardList">
                       <div class="item">
                         <div class="item__left">
                           <div class="item__icon">
@@ -797,7 +804,7 @@
               <span class="white"> 2,352,000 ₽ </span>
             </div>
             <div class="wrapper__bottom-buttons">
-              <button class="button center" onclick="goTo('withdrawCardData')">Далее</button>
+              <button class="button center" disabled id="withdrawCardButton">Далее</button>
               <button class="button button__gray center" onclick="goTo('withdrawSelect')">Назад</button>
             </div>
           </div>
@@ -826,7 +833,7 @@
                         <input id="withdrawCardInput" class="withdrawCard" type="text" inputmode="numeric" pattern="[0-9\s]*" maxlength="19" placeholder="Введите номер карты" />
                         <button class="pasteButton">Вставить</button>
                       </div>
-                      <div class="phone__error">Неправильный номер карты</div>
+                      <div class="phone__error hidden">Неправильный номер карты</div>
                     </div>
                     <div class="filter__flex pad">
                       <div class="filter__input">
@@ -846,7 +853,7 @@
               <span class="white"> 2,352,000 ₽ </span>
             </div>
             <div class="wrapper__bottom-buttons">
-              <button class="button center" disabled>Далее</button>
+              <button class="button center" disabled id="withdrawCardDataButton">Далее</button>
               <button class="button button__gray center" onclick="goTo('withdrawCard')">Назад</button>
             </div>
           </div>
@@ -955,7 +962,7 @@
         <div class="wrapper__top">
           <header class="header center">
             <div class="container">
-              <button class="button__back" onclick="goTo('withdrawCrypto')">
+              <button class="button__back" onclick="goTo('back')">
                 <svg><use xlink:href="assets/img/icon.svg#back"></use></svg>
               </button>
               <div class="header__right">
@@ -971,6 +978,7 @@
                     <textarea name="" placeholder="Введите Bitcoin-адрес" id="wallet"></textarea>
                     <button class="button button__gray" id="pasteButton">Вставить</button>
                   </div>
+                  <div class="phone__error card__error hidden">Вы ввели неправильный адрес, попробуйте снова</div>
                 </div>
               </div>
             </div>
@@ -987,8 +995,43 @@
               <span>(2,352,000 ₽)</span>
             </div>
             <div class="wrapper__bottom-buttons">
-              <button class="button center" disabled>Далее</button>
-              <button class="button button__gray center" onclick="goTo('withdrawCrypto')">Назад</button>
+              <button class="button center" disabled id="withdrawWalletButton">Далее</button>
+              <button class="button button__gray center" onclick="goTo('back')">Назад</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper" id="withdrawSuccess">
+        <div class="wrapper__top">
+          <header class="header center">
+            <div class="container">
+              <button class="button__back" onclick="goTo('home')">
+                <svg><use xlink:href="assets/img/icon.svg#back"></use></svg>
+              </button>
+              <div class="header__right">
+                <span class="page__name">Заявка отправлена</span>
+              </div>
+            </div>
+          </header>
+          <main class="main">
+            <div class="container">
+              <div class="success__wrapper">
+                <div class="success__img">
+                  <svg><use xlink:href="assets/img/icon.svg#checkDouble"></use></svg>
+                </div>
+                <div class="success__head">Успешно!</div>
+                <div class="success__text">
+                  Ваши средства будут в ближайшее время <br />
+                  зачислены на указанные вами реквизиты
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+        <div class="wrapper__bottom col">
+          <div class="container">
+            <div class="wrapper__bottom-buttons">
+              <button class="button center" onclick="goTo('home')">Отлично!</button>
             </div>
           </div>
         </div>
@@ -1115,6 +1158,18 @@
       </div>
       <div class="fixed__window"></div>
     </div>
+    <svg width="0" height="0" style="position: absolute">
+      <defs>
+        <radialGradient id="a" cx="0" cy="0" r="1" gradientTransform="rotate(90 .25 16.25) scale(13.3333)" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ffffff80" />
+          <stop offset="1" stop-color="#ffffff80" />
+        </radialGradient>
+        <radialGradient id="b" cx="0" cy="0" r="1" gradientTransform="rotate(90 .25 16.25) scale(13.3333)" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#52C2FF" />
+          <stop offset="1" stop-color="#0098EA" />
+        </radialGradient>
+      </defs>
+    </svg>
     <script src="assets/js/main.js"></script>
   </body>
 </html>

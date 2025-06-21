@@ -955,6 +955,23 @@ main {
   &__bottom {
     border-top: 1px solid var(--border-default);
 
+    &-error {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 133%;
+      color: var(--text-destructive);
+      text-align: center;
+      transition: all .2s ease-in-out;
+      height: auto;
+
+      &.hidden {
+        height: 0;
+        overflow: hidden;
+        margin-top: 0;
+        opacity: 0;
+      }
+    }
+
     &-select {
       display: flex;
       flex-direction: column;
@@ -1553,6 +1570,15 @@ main {
     font-size: 12px;
     line-height: 133%;
     color: var(--text-destructive);
+    height: auto;
+    transition: all .2s ease-in-out;
+
+    &.hidden {
+      height: 0;
+      overflow: hidden;
+      margin-top: 0;
+      opacity: 0;
+    }
   }
 }
 
@@ -1560,6 +1586,10 @@ main {
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  &__error {
+    margin-top: 8px;
+  }
 }
 
 .success {
@@ -2039,6 +2069,23 @@ main {
       svg {
         width: 32px;
         height: 32px;
+        transition: all .2s ease-in-out;
+        overflow: visible;
+
+        path {
+          fill: url(#a);
+          transition: all .2s ease-in-out;
+        }
+      }
+
+      &.blue {
+        svg {
+          filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0.47)) drop-shadow(0 0 8px rgba(0, 152, 234, 0.5));
+
+          path {
+            fill: url(#b);
+          }
+        }
       }
     }
 

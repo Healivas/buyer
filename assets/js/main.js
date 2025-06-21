@@ -361,6 +361,7 @@ const FormControl = (() => {
   function initForm(inputSelector, buttonSelector, pageId) {
     const input = document.querySelector(inputSelector);
     const button = document.querySelector(buttonSelector);
+    const profileClassEl = document.querySelector("#profileClass");
     if (!input || !button) return;
 
     inputButtonMap.set(pageId, { input, button });
@@ -376,6 +377,14 @@ const FormControl = (() => {
         const withdrawSumEl = document.getElementById("withdrawSum");
         if (withdrawSumEl) {
           withdrawSumEl.textContent = isValid ? value : "0";
+        }
+
+        if (profileClassEl) {
+          if (value === "") {
+            profileClassEl.classList.remove("blue");
+          } else {
+            profileClassEl.classList.add("blue");
+          }
         }
       }
     };
@@ -398,13 +407,12 @@ const FormControl = (() => {
       pair.input.value = "";
       pair.button.disabled = true;
 
-      if (pageId === "withdraw") {
-        switchBlur("blur__white");
-      }
-
       resetTimers.delete(pageId);
     }, delay);
-
+    if (pageId === "withdraw") {
+      const errorBlock = document.getElementById("withdrawError");
+      if (errorBlock) errorBlock.classList.add("hidden");
+    }
     resetTimers.set(pageId, timer);
   }
 
@@ -418,11 +426,12 @@ let activePage = "home";
 let pageHistory = [];
 let lastVisitedPage = null;
 
+let selectedItem = null;
+
 function goTo(pageId) {
   if (pageId === "back") {
     if (pageHistory.length > 0) {
       const previous = pageHistory.pop();
-
       goTo(previous);
     }
     return;
@@ -434,16 +443,33 @@ function goTo(pageId) {
     activePage = pageId;
   }
 
-  const wrappers = document.querySelectorAll(".wrapper");
-  wrappers.forEach((w) => w.classList.remove("active"));
+  document.querySelectorAll(".item.active").forEach((el) => el.classList.remove("active"));
+  selectedItem = null;
+
+  document.querySelectorAll(".wrapper").forEach((w) => w.classList.remove("active"));
+
   const targetWrapper = document.getElementById(pageId);
   if (targetWrapper) targetWrapper.classList.add("active");
 
+  const phoneInput = document.querySelector(".withdrawPhone");
+  const errorBlock = document.querySelector(".phone__error");
+  if (phoneInput) phoneInput.value = "";
+  if (errorBlock) errorBlock.classList.add("hidden");
+
   if (lastVisitedPage) {
     FormControl.reset(lastVisitedPage, 300);
+    const selectButtons = document.querySelectorAll("#selectWrapper button");
+    selectButtons.forEach((btn) => btn.classList.remove("active"));
     updateInputWidth();
   }
-
+  if (pageId === "home") {
+    switchBlur("");
+    return;
+  }
+  if (pageId === "profile") {
+    switchBlur("blur__blue");
+    return;
+  }
   if (pageId === "withdraw") {
     switchBlur("blur__white");
     requestAnimationFrame(() => {
@@ -451,8 +477,235 @@ function goTo(pageId) {
     });
     return;
   }
-  switchBlur(pageId === "profile" ? "blur__blue" : ["withdraw", "withdrawSelect"].includes(pageId) ? "blur__white" : "");
+
+  if (pageId === "withdrawSelect") {
+    switchBlur("blur__white");
+    const button = document.getElementById("withdrawSelectButton");
+    const items = document.querySelectorAll("#withdrawSelectList .item");
+    const handleSelection = () => {
+      const anySelected = document.querySelector("#withdrawSelectList .item.active");
+      button.disabled = !anySelected;
+    };
+
+    items.forEach((item) => {
+      item.addEventListener("click", () => {
+        items.forEach((i) => i.classList.remove("active"));
+        item.classList.add("active");
+        selectedItem = item.getAttribute("data-target");
+        handleSelection();
+        switchBlur("blur__blue");
+      });
+    });
+
+    handleSelection();
+    return;
+  }
+
+  if (pageId === "withdrawSbp") {
+    switchBlur("");
+    const button = document.getElementById("withdrawSbpButton");
+    const items = document.querySelectorAll("#withdrawSbpList .item");
+
+    const updateButtonState = () => {
+      const hasSelection = document.querySelector("#withdrawSbpList .item.active");
+      button.disabled = !hasSelection;
+    };
+
+    items.forEach((item) => {
+      item.addEventListener("click", () => {
+        items.forEach((i) => i.classList.remove("active"));
+        item.classList.add("active");
+        updateButtonState();
+      });
+    });
+
+    updateButtonState();
+    return;
+  }
+
+  if (pageId === "withdrawCard") {
+    switchBlur("");
+    const button = document.getElementById("withdrawCardButton");
+    const items = document.querySelectorAll("#withdrawCardList .item");
+
+    const updateButtonState = () => {
+      const hasSelection = document.querySelector("#withdrawCardList .item.active");
+      button.disabled = !hasSelection;
+    };
+
+    items.forEach((item) => {
+      item.addEventListener("click", () => {
+        items.forEach((i) => i.classList.remove("active"));
+        item.classList.add("active");
+        updateButtonState();
+      });
+    });
+
+    updateButtonState();
+    return;
+  }
+
+  if (pageId === "withdrawCardData") {
+    switchBlur("");
+    const button = document.getElementById("withdrawCardDataButton");
+    const cardInput = document.getElementById("withdrawCardInput");
+    const errorBlock = document.querySelector("#withdrawCardData .phone__error");
+
+    const updateButtonState = () => {
+      const value = cardInput?.value?.trim() || "";
+      button.disabled = value === "";
+    };
+
+    if (cardInput) {
+      cardInput.value = "";
+      cardInput.addEventListener("input", updateButtonState);
+      updateButtonState();
+    }
+
+    if (errorBlock) errorBlock.classList.add("hidden");
+
+    return;
+  }
+
+  if (pageId === "withdrawWallet") {
+    switchBlur("");
+    const walletInput = document.getElementById("wallet");
+    const walletButton = document.getElementById("withdrawWalletButton");
+    const errorBlock = document.querySelector("#withdrawWallet .card__error");
+
+    if (walletInput) {
+      walletInput.value = "";
+      walletInput.addEventListener("input", () => {
+        walletButton.disabled = walletInput.value.trim().length === 0;
+        if (errorBlock) errorBlock.classList.add("hidden");
+      });
+    }
+
+    if (walletButton) {
+      walletButton.disabled = true;
+    }
+
+    if (errorBlock) {
+      errorBlock.classList.add("hidden");
+    }
+
+    return;
+  }
+
+  if (pageId === "withdrawCrypto") {
+    switchBlur("");
+    return;
+  }
+
+  if (pageId === "withdrawSuccess") {
+    switchBlur("blur__green");
+    return;
+  }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const withdrawButton = document.getElementById("withdrawButton");
+  const withdrawInput = document.getElementById("withdrawInput");
+  const errorBlock = document.getElementById("withdrawError");
+
+  if (!withdrawButton || !withdrawInput || !errorBlock) return;
+
+  withdrawButton.addEventListener("click", () => {
+    const rawValue = withdrawInput.value.trim().replace(",", ".");
+    const amount = parseFloat(rawValue);
+
+    const isValid = !isNaN(amount) && amount > 0 && amount <= balance;
+
+    if (isValid) {
+      goTo("withdrawSelect");
+      errorBlock.classList.add("hidden");
+    } else {
+      errorBlock.classList.remove("hidden");
+      withdrawInput.focus();
+      switchBlur("blur__red");
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const walletInput = document.getElementById("wallet");
+  const walletButton = document.getElementById("withdrawWalletButton");
+  const errorBlock = document.querySelector("#withdrawWallet .card__error");
+
+  if (walletInput && walletButton) {
+    walletInput.addEventListener("input", () => {
+      walletButton.disabled = walletInput.value.trim().length === 0;
+      if (errorBlock) errorBlock.classList.add("hidden");
+    });
+
+    walletButton.addEventListener("click", () => {
+      const value = walletInput.value.trim();
+      if (value.length > 5) {
+        goTo("withdrawSuccess");
+      } else {
+        if (errorBlock) errorBlock.classList.remove("hidden");
+        walletInput.focus();
+      }
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sbpButton = document.getElementById("withdrawSbpButton");
+  const phoneInput = document.querySelector(".withdrawPhone");
+  const errorBlock = document.querySelector(".phone__error");
+  const cardButton = document.getElementById("withdrawCardButton");
+
+  if (cardButton) {
+    cardButton.addEventListener("click", () => {
+      const hasActiveItem = document.querySelector("#withdrawCardList .item.active");
+
+      if (hasActiveItem) {
+        goTo("withdrawCardData");
+      }
+    });
+  }
+  if (sbpButton && phoneInput) {
+    sbpButton.addEventListener("click", () => {
+      const digits = phoneInput.value.replace(/\D/g, "");
+      const isValid = digits.length === 11;
+
+      if (isValid) {
+        goTo("withdrawSuccess");
+      } else {
+        if (errorBlock) errorBlock.classList.remove("hidden");
+        phoneInput.focus();
+      }
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cardDataButton = document.getElementById("withdrawCardDataButton");
+  const cardInput = document.getElementById("withdrawCardInput");
+  const errorBlock = document.querySelector("#withdrawCardData .phone__error");
+
+  const isCardValid = (value) => {
+    const digits = value.replace(/\D/g, "");
+    return /^\d{16}$/.test(digits);
+  };
+
+  if (cardInput && cardDataButton) {
+    cardInput.addEventListener("input", () => {
+      cardDataButton.disabled = cardInput.value.trim() === "";
+    });
+
+    cardDataButton.addEventListener("click", () => {
+      const raw = cardInput.value || "";
+      if (isCardValid(raw)) {
+        goTo("withdrawSuccess");
+      } else {
+        errorBlock?.classList.remove("hidden");
+        cardInput.focus();
+      }
+    });
+  }
+});
 
 let currentBlurClass = "";
 
@@ -471,18 +724,8 @@ function switchBlur(colorClass) {
   void blur.offsetHeight;
   setTimeout(() => {
     blur.classList.add(colorClass);
-  }, 150);
+  }, 100);
 }
-
-let selectedItem = null;
-
-document.querySelectorAll("#withdrawSelectList .item").forEach((item) => {
-  item.addEventListener("click", () => {
-    document.querySelectorAll("#withdrawSelectList .item").forEach((i) => i.classList.remove("active"));
-    item.classList.add("active");
-    selectedItem = item.getAttribute("data-target");
-  });
-});
 
 document.querySelector("#withdrawSelectButton").addEventListener("click", () => {
   if (!selectedItem) return;
@@ -673,8 +916,46 @@ document.addEventListener("DOMContentLoaded", () => {
         const text = await navigator.clipboard.readText();
         walletInput.value = text;
         walletInput.focus();
-        walletInput.setSelectionRange(walletInput.value.length, walletInput.value.length); // курсор в конец
+        walletInput.setSelectionRange(walletInput.value.length, walletInput.value.length);
       } catch (err) {}
     });
   }
+});
+
+let balance = 5000;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const selectWrapper = document.getElementById("selectWrapper");
+  const withdrawInput = document.getElementById("withdrawInput");
+
+  if (!selectWrapper || !withdrawInput) return;
+
+  const buttons = selectWrapper.querySelectorAll("button");
+
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      buttons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      let value = "";
+
+      switch (index) {
+        case 0:
+          value = 1;
+          break;
+        case 1:
+          value = balance * 0.25;
+          break;
+        case 2:
+          value = balance * 0.5;
+          break;
+        case 3:
+          value = balance;
+          break;
+      }
+
+      withdrawInput.value = value;
+      withdrawInput.dispatchEvent(new Event("input"));
+    });
+  });
 });

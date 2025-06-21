@@ -937,6 +937,22 @@ main {
 .wrapper__bottom {
   border-top: 1px solid var(--border-default);
 }
+.wrapper__bottom-error {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--text-destructive);
+  text-align: center;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  height: auto;
+}
+.wrapper__bottom-error.hidden {
+  height: 0;
+  overflow: hidden;
+  margin-top: 0;
+  opacity: 0;
+}
 .wrapper__bottom-select {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1603,6 +1619,15 @@ main {
   font-size: 12px;
   line-height: 133%;
   color: var(--text-destructive);
+  height: auto;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.phone__error.hidden {
+  height: 0;
+  overflow: hidden;
+  margin-top: 0;
+  opacity: 0;
 }
 
 .card {
@@ -1614,6 +1639,9 @@ main {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 8px;
+}
+.card__error {
+  margin-top: 8px;
 }
 
 .success__wrapper {
@@ -2165,6 +2193,21 @@ main {
 .profile__balance-flex svg {
   width: 32px;
   height: 32px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  overflow: visible;
+}
+.profile__balance-flex svg path {
+  fill: url(#a);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.profile__balance-flex.blue svg {
+  -webkit-filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0.47)) drop-shadow(0 0 8px rgba(0, 152, 234, 0.5));
+          filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0.47)) drop-shadow(0 0 8px rgba(0, 152, 234, 0.5));
+}
+.profile__balance-flex.blue svg path {
+  fill: url(#b);
 }
 .profile__balance-currency {
   font-weight: 400;
