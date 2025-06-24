@@ -2227,7 +2227,8 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-top: 16px;
+  margin: 16px auto 0 auto;
+  max-width: 358px;
 }
 .profile__stats .item {
   display: -webkit-box;

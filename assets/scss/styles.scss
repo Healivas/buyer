@@ -2103,7 +2103,8 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 16px;
+    margin: 16px auto 0 auto;
+    max-width: 358px;
 
     .item {
       display: flex;
