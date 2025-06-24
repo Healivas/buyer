@@ -1149,7 +1149,7 @@ main {
   color: var(--text-white-default);
   text-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.15);
   border-radius: 8px;
-  padding: 8px 10px;
+  padding: 10px;
   -webkit-box-shadow: inset 0 2px 0 0 var(--border-default), inset 0 0 0 1px var(--border-accent-primary);
           box-shadow: inset 0 2px 0 0 var(--border-default), inset 0 0 0 1px var(--border-accent-primary);
   background: -webkit-gradient(linear, left bottom, left top, from(#2b5df3), to(#437dfc));
