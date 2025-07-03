@@ -1073,6 +1073,7 @@ main {
       display: flex;
       flex-direction: column;
       gap: 8px;
+      margin-top: 8px;
     }
 
     &.col {
@@ -1152,6 +1153,10 @@ main {
     &:hover {
       opacity: .8;
     }
+  }
+
+  &.withdrawButton {
+    margin-top: 8px;
   }
 
   &:disabled {
@@ -1904,10 +1909,14 @@ main {
     padding-bottom: 8px;
   }
 
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
   &__top {
     display: flex;
     align-items: center;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
     line-height: 143%;
     text-align: center;

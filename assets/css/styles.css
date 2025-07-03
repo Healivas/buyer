@@ -1073,6 +1073,7 @@ main {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 8px;
+  margin-top: 8px;
 }
 .wrapper__bottom.col .container {
   display: -webkit-box;
@@ -1162,6 +1163,9 @@ main {
 }
 .button.withdraw__button:hover {
   opacity: 0.8;
+}
+.button.withdrawButton {
+  margin-top: 8px;
 }
 .button:disabled {
   background: var(--bg-state-disabled);
@@ -1996,6 +2000,16 @@ main {
   transition: all 0.2s ease-in-out;
 }
 
+.step {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 6px;
+}
 .step:not(:last-child) {
   border-bottom: 1px solid var(--border-default);
   padding-bottom: 8px;
@@ -2007,7 +2021,7 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   line-height: 143%;
   text-align: center;

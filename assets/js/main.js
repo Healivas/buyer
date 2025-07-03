@@ -975,3 +975,13 @@ window.addEventListener("keydown", function (e) {
     e.preventDefault();
   }
 });
+
+document.addEventListener("click", function (event) {
+  const active = document.activeElement;
+
+  if (active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA")) {
+    if (!active.contains(event.target)) {
+      active.blur();
+    }
+  }
+});
